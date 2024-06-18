@@ -56,6 +56,15 @@ void update()
   }
 }
 
+void conectarBlynk()
+{
+  while (!Blynk.connected()) {
+    // Espera até que a conexão seja estabelecida
+    delay(10);
+    Serial.println("Conectado ao Blynk!");
+  }
+}
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -78,6 +87,8 @@ void setup() {
 
   Blynk.begin(BLYNK_AUTH_TOKEN,id,senha,"blynk.cloud",80);
 
+  conectarBlynk();
+
   Serial.println(WiFi.localIP());
   String ipString = WiFi.localIP().toString();
   Blynk.virtualWrite(IPviwer, ipString);
@@ -88,6 +99,10 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  if (!Blynk.connected()) {
+    conectarBlynk();
+    Serial.println("Conectado ao Blynk!");
+  }
 
   Blynk.run();
   update();
