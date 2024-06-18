@@ -65,6 +65,12 @@ void conectarBlynk()
   }
 }
 
+void VerificarRSSI()
+{
+  String ipString = WiFi.localIP().toString() + " = " + WiFi.RSSI() + " dBm";
+  Blynk.virtualWrite(IPviwer, ipString);
+}
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -90,8 +96,7 @@ void setup() {
   conectarBlynk();
 
   Serial.println(WiFi.localIP());
-  String ipString = WiFi.localIP().toString();
-  Blynk.virtualWrite(IPviwer, ipString);
+  VerificarRSSI();
 
   String voidString = " ";
   Blynk.virtualWrite(StatusViwer, voidString);
@@ -105,6 +110,7 @@ void loop() {
   }
 
   Blynk.run();
+  VerificarRSSI();
   update();
 
   delay(1);
