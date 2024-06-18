@@ -6,7 +6,7 @@
 #include "ESP8266WiFi.h"
 
 const char* id = "Zé Paulo";
-const char* senha = "adelino87";
+const char* senha = "...";
 
 int botaoTeste = 0;
 int SenCasa = 0;
