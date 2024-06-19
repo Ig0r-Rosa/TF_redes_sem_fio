@@ -74,10 +74,6 @@ void VerificarRSSI()
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-
-  //pinMode(D0, INPUT);
-  pinMode(LED_BUILTIN, OUTPUT); //
-
   pinMode(D1, INPUT); //sensor de input 1
   pinMode(D2, INPUT); //sensor de input 2
   pinMode(D3, INPUT); //sensor de input 3, também é o botão do esp
